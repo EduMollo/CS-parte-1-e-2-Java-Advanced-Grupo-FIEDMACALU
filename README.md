@@ -2,7 +2,8 @@
 
 > **Grupo:** FIEDMACALU
 > **Disciplina:** Java Advanced  
-> **Sprint 1 e 2 — Entrega:** 24/05/2025
+> **Sprint 1 e 2 — Entrega:** 24/05/2025  
+> **Repositório:** [CS-parte-1-e-2-Java-Advanced-Grupo-FIEDMACALU](https://github.com/EduMollo/CS-parte-1-e-2-Java-Advanced-Grupo-FIEDMACALU)
 
 ---
 
