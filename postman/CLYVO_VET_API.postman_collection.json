@@ -1,0 +1,616 @@
+{
+  "info": {
+    "name": "CLYVO VET API — FIAP Challenge 2026",
+    "description": "Coleção completa de endpoints da API CLYVO VET. Importe no Postman e use a variável {{baseUrl}} com valor http://localhost:8080",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Tutores",
+      "item": [
+        {
+          "name": "Listar Tutores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores?page=0&size=10&sort=nome,asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"},
+                {"key": "sort", "value": "nome,asc"},
+                {"key": "nome", "value": "", "disabled": true},
+                {"key": "email", "value": "", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Tutor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Tutor por CPF",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores/cpf/12345678901",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores", "cpf", "12345678901"]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Tutor",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Pedro Almeida\",\n  \"cpf\": \"55566677788\",\n  \"email\": \"joao.almeida@email.com\",\n  \"telefone\": \"11912345678\",\n  \"dataNascimento\": \"1992-05-10\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Tutor",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Ana Beatriz Silva Souza\",\n  \"cpf\": \"12345678901\",\n  \"email\": \"ana.silva.novo@email.com\",\n  \"telefone\": \"11987654321\",\n  \"dataNascimento\": \"1985-03-15\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Inativar Tutor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/tutores/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "tutores", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Pets",
+      "item": [
+        {
+          "name": "Listar Pets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets?page=0&size=10&sort=nome,asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"},
+                {"key": "sort", "value": "nome,asc"},
+                {"key": "nome", "value": "", "disabled": true},
+                {"key": "especie", "value": "CACHORRO", "disabled": true},
+                {"key": "raca", "value": "", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Pet por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Pets por Tutor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets/tutor/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets", "tutor", "1"]
+            }
+          }
+        },
+        {
+          "name": "Dashboard de Saúde do Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets/1/dashboard",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets", "1", "dashboard"]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Pet",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Rex\",\n  \"especie\": \"CACHORRO\",\n  \"raca\": \"Beagle\",\n  \"dataNascimento\": \"2022-03-15\",\n  \"pesoKg\": 12.5,\n  \"sexo\": \"MACHO\",\n  \"castrado\": false,\n  \"microchip\": \"985199999999999\",\n  \"tutorId\": 2,\n  \"clinicaPrincipalId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Pet",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Bolinha\",\n  \"especie\": \"CACHORRO\",\n  \"raca\": \"Golden Retriever\",\n  \"dataNascimento\": \"2018-06-10\",\n  \"pesoKg\": 29.0,\n  \"sexo\": \"MACHO\",\n  \"castrado\": true,\n  \"microchip\": \"985112345678901\",\n  \"tutorId\": 1,\n  \"clinicaPrincipalId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets", "1"]
+            }
+          }
+        },
+        {
+          "name": "Inativar Pet",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/pets/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "pets", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Clínicas",
+      "item": [
+        {
+          "name": "Listar Clínicas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clinicas?page=0&size=10&sort=nome,asc",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clinicas"],
+              "query": [
+                {"key": "page", "value": "0"},
+                {"key": "size", "value": "10"},
+                {"key": "sort", "value": "nome,asc"},
+                {"key": "nome", "value": "", "disabled": true},
+                {"key": "cidade", "value": "São Paulo", "disabled": true},
+                {"key": "estado", "value": "SP", "disabled": true}
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Clínica por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clinicas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clinicas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Clínica",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Clínica Vet Saúde Animal\",\n  \"cnpj\": \"55544433300011\",\n  \"telefone\": \"1140001234\",\n  \"email\": \"contato@saudeanimal.com.br\",\n  \"endereco\": \"Rua das Rosas, 50\",\n  \"cidade\": \"Campinas\",\n  \"estado\": \"SP\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clinicas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clinicas"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Clínica",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Clínica VetCare Premium SP\",\n  \"cnpj\": \"12345678000100\",\n  \"telefone\": \"1132001234\",\n  \"email\": \"sp@vetcare.com.br\",\n  \"endereco\": \"Av. Paulista, 1000 — 5º andar\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clinicas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clinicas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Inativar Clínica",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/clinicas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "clinicas", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consultas",
+      "item": [
+        {
+          "name": "Listar Consultas por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/pet/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "pet", "1"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Histórico Completo por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/pet/1/historico",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "pet", "1", "historico"]
+            }
+          }
+        },
+        {
+          "name": "Listar por Clínica",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/clinica/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "clinica", "1"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Listar por Status",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/status/AGENDADA?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "status", "AGENDADA"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Retornos Pendentes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/retornos-pendentes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "retornos-pendentes"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Consulta por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Agendar Consulta",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataConsulta\": \"2025-06-15\",\n  \"status\": \"AGENDADA\",\n  \"tipoConsulta\": \"ROTINA\",\n  \"veterinario\": \"Dr. Paulo Henrique\",\n  \"valor\": 200.00,\n  \"petId\": 1,\n  \"clinicaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Consulta",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dataConsulta\": \"2025-06-15\",\n  \"status\": \"CONFIRMADA\",\n  \"tipoConsulta\": \"ROTINA\",\n  \"veterinario\": \"Dr. Paulo Henrique\",\n  \"diagnostico\": \"Pet saud\u00e1vel, check-up anual.\",\n  \"valor\": 220.00,\n  \"petId\": 1,\n  \"clinicaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Cancelar Consulta",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/consultas/3/cancelar",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "consultas", "3", "cancelar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Eventos de Saúde",
+      "item": [
+        {
+          "name": "Listar Eventos por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude/pet/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude", "pet", "1"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Timeline de Saúde do Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude/pet/1/timeline",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude", "pet", "1", "timeline"]
+            }
+          }
+        },
+        {
+          "name": "Alertas Pendentes por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude/pet/2/alertas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude", "pet", "2", "alertas"]
+            }
+          }
+        },
+        {
+          "name": "Alertas por Tutor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude/tutor/1/alertas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude", "tutor", "1", "alertas"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Evento de Saúde",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tipoEvento\": \"VERMIFUGACAO\",\n  \"descricao\": \"Vermifugação trimestral realizada com Drontal Plus.\",\n  \"dataEvento\": \"2025-05-20\",\n  \"dataProximaAcao\": \"2025-08-20\",\n  \"petId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude"]
+            }
+          }
+        },
+        {
+          "name": "Concluir Evento",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/eventos-saude/3/concluir",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "eventos-saude", "3", "concluir"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vacinas",
+      "item": [
+        {
+          "name": "Listar Vacinas por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/vacinas/pet/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "vacinas", "pet", "1"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Vacinas Pendentes por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/vacinas/pet/2/pendentes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "vacinas", "pet", "2", "pendentes"]
+            }
+          }
+        },
+        {
+          "name": "Vacinas Pendentes por Tutor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/vacinas/tutor/1/pendentes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "vacinas", "tutor", "1", "pendentes"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Vacina",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Giardia\",\n  \"fabricante\": \"Zoetis\",\n  \"lote\": \"LOT2025050\",\n  \"dataAplicacao\": \"2025-05-20\",\n  \"dataValidade\": \"2026-05-20\",\n  \"proximaDose\": \"2026-05-20\",\n  \"petId\": 1,\n  \"clinicaId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/vacinas",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "vacinas"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Medicamentos",
+      "item": [
+        {
+          "name": "Listar Medicamentos por Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/medicamentos/pet/1?page=0&size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "medicamentos", "pet", "1"],
+              "query": [{"key": "page", "value": "0"}, {"key": "size", "value": "10"}]
+            }
+          }
+        },
+        {
+          "name": "Medicamentos Ativos do Pet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/medicamentos/pet/1/ativos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "medicamentos", "pet", "1", "ativos"]
+            }
+          }
+        },
+        {
+          "name": "Medicamentos Uso Contínuo",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/medicamentos/pet/3/uso-continuo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "medicamentos", "pet", "3", "uso-continuo"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Medicamento",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Apoquel\",\n  \"principioAtivo\": \"Oclacitinibe\",\n  \"dosagem\": \"16mg\",\n  \"frequencia\": \"12 em 12 horas\",\n  \"dataInicio\": \"2025-05-20\",\n  \"dataFim\": \"2025-06-20\",\n  \"usoContinuo\": false,\n  \"observacoes\": \"Tratamento de dermatite atópica. Reavaliação em 30 dias.\",\n  \"petId\": 1,\n  \"consultaOrigemId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/medicamentos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "medicamentos"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
